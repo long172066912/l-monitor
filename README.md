@@ -1,6 +1,6 @@
 # l-monitor
 基于micrometer实现监控组件，支持JVM、接口调用、DB执行、自定义监控等，可扩展缓存等监控
-![img.png](img.png)
+![img_1.png](img_1.png)
 
 Spring服务引包即可享用以下监控：
 所有接口的监控
