@@ -1,5 +1,5 @@
 
-rootProject.name = 'wb-base-component-root'
+rootProject.name = 'l-monitor'
 
-include 'wb-base-component-core'
-include 'wb-base-component-starter'
+include 'l-monitor-core'
+include 'l-monitor-starter'

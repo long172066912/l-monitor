@@ -78,7 +78,7 @@ tag将会在监控大盘上作为查询指标显示，因此禁止将uid这种�
 * @param param
 * @return
   */
-  @Timed(value = WbMonitorCounterKeys.COUNTER_KEY_1, extraTags = {"tag-key", "#param"})
+  @Timed(value = LMonitorCounterKeys.COUNTER_KEY_1, extraTags = {"tag-key", "#param"})
   public long timerDemo(String param) {}
   @Counted
 
@@ -90,7 +90,7 @@ tag将会在监控大盘上作为查询指标显示，因此禁止将uid这种�
   @Counted(value = "counterDemo", extraTags = {"tag-key", "#param"})
   public long counterDemo(String param) {}
 
-二、WbMonitor方式
+二、LMonitor方式
 通过枚举管理业务监控指标，注：业务自己实现枚举，不在公共包中维护
 
 Counter 展开源码
@@ -102,7 +102,7 @@ Counter
 /**
 * 计数类监控统计，每分钟统计一次，推送至Ops-Grafana监控平台，可在Ops后台进行
   */
-  WbMonitor.count(WbMonitorCounterKeys.COUNTER_KEY_1, "tag-key", "tag-value");
+  LMonitor.count(LMonitorCounterKeys.COUNTER_KEY_1, "tag-key", "tag-value");
   Timer
 
 支持统计指标：count、max、avg、p50、p90、p99、p999
@@ -110,35 +110,35 @@ Counter
 
 Timer: try-with-resources
 
-try (WbMonitor.WbTimer wbTimer = WbMonitor.start(WbMonitorTimerKeys.TIMER_KEY_1, "tag-key", "tag-value")) {
+try (LMonitor.LTimer lTimer = LMonitor.start(LMonitorTimerKeys.TIMER_KEY_1, "tag-key", "tag-value")) {
 /**
 * 业务逻辑1 xxx
-* 对 WbMonitorTimerKeys.TIMER_KEY_1 拼上 -segment1，监控统计 业务逻辑1
+* 对 LMonitorTimerKeys.TIMER_KEY_1 拼上 -segment1，监控统计 业务逻辑1
   */
-  wbTimer.split("-segment1");
+  lTimer.split("-segment1");
   /**
 * 业务逻辑2 xxx
-* 对 WbMonitorTimerKeys.TIMER_KEY_1 拼上 -segment2，监控统计 业务逻辑2
+* 对 LMonitorTimerKeys.TIMER_KEY_1 拼上 -segment2，监控统计 业务逻辑2
   */
-  wbTimer.split("-segment2");
+  lTimer.split("-segment2");
   }
   Timer: start->xxx->stop
 
-WbMonitor.WbTimer wbTimer = WbMonitor.start(WbMonitorTimerKeys.TIMER_KEY_1, "tag-key", "tag-value");
+LMonitor.LTimer lTimer = LMonitor.start(LMonitorTimerKeys.TIMER_KEY_1, "tag-key", "tag-value");
 try {
 //xxx
 } finally {
-wbTimer.stop();
+lTimer.stop();
 }
 Sampler: sampler
 
-WbMonitor.sampler(WbMonitorSamplerKey.SAMPLER_KEY, xxx);
-WbMonitor.samplerMapSize(WbMonitorSamplerKey.SAMPLER_KEY, map);
-WbMonitor.samplerCollectionSize(WbMonitorSamplerKey.SAMPLER_KEY, collection);
+LMonitor.sampler(LMonitorSamplerKey.SAMPLER_KEY, xxx);
+LMonitor.samplerMapSize(LMonitorSamplerKey.SAMPLER_KEY, map);
+LMonitor.samplerCollectionSize(LMonitorSamplerKey.SAMPLER_KEY, collection);
 三、线程池监控
 通过Bean方式创建的线程池自动监控
 
-ExecutorService executorService = WbMonitor.getMonitorExecutorService(
+ExecutorService executorService = LMonitor.getMonitorExecutorService(
 "testPool",
 new ThreadPoolExecutor(5, 10, 10, TimeUnit.SECONDS, new LinkedBlockingDeque<>(1000))
 );

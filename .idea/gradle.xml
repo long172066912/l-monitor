@@ -11,8 +11,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/wb-base-component-core" />
-            <option value="$PROJECT_DIR$/wb-base-component-starter" />
+            <option value="$PROJECT_DIR$/l-monitor-core" />
+            <option value="$PROJECT_DIR$/l-monitor-starter" />
           </set>
         </option>
       </GradleProjectSettings>

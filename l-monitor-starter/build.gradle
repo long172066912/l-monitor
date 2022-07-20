@@ -1,0 +1,19 @@
+
+// 版本 默认使用 根目录下指定的版本，可以自定义版本进行覆盖
+// version '1.0-SNAPSHOT'
+
+// jar 包名称
+archivesBaseName = "${project.name}"
+
+// 定义自己的依赖
+dependencies {
+    implementation project(':l-monitor-core')
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.7'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.5.7'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.9'
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
+    implementation 'com.baomidou:mybatis-plus:3.3.2'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '30.0-jre'
+}
+
