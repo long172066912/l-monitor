@@ -1,0 +1,5 @@
+
+rootProject.name = 'wb-base-component-root'
+
+include 'wb-base-component-core'
+include 'wb-base-component-starter'

@@ -1,0 +1,21 @@
+
+// 版本 默认使用 根目录下指定的版本，可以自定义版本进行覆盖
+// version '1.0-SNAPSHOT'
+
+// jar 包名称
+archivesBaseName = "${project.name}"
+
+// 定义自己的依赖，[************不能添加spring依赖，spring请放在starter中*************]
+dependencies {
+    implementation group: 'io.micrometer', name: 'micrometer-core', version: '1.7.6'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+    implementation group: 'com.google.guava', name: 'guava', version: '30.0-jre'
+    implementation group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
+    compileOnly 'org.slf4j:slf4j-log4j12:1.7.30'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.9'
+    implementation group: 'com.github.phantomthief', name: 'buffer-trigger', version: '0.2.19'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'com.alibaba.fastjson2', name: 'fastjson2', version: '2.0.9'
+}
+
+test.enabled = false

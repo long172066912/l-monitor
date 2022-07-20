@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+allprojects {
+    apply plugin: 'java'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // 仓库地址
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // lombok
+        annotationProcessor "org.projectlombok:lombok:1.18.24"
+        implementation "org.projectlombok:lombok:1.18.24"
+
+        testImplementation group: 'junit', name: 'junit', version: '4.11'
+        testImplementation 'org.mockito:mockito-core:1.10.19'
+        testImplementation 'org.powermock:powermock-api-mockito:1.6.2'
+        testImplementation 'org.powermock:powermock-module-junit4:1.6.2'
+    }
+
+}
